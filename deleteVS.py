@@ -16,12 +16,10 @@ def delete_vs_folder_in_current_directory(directory):
 def get_old_subfolders(directory, days_):
     # 获取当前时间
     current_time = time.time()
-    # 计算90天前的时间点
     threshold_time = current_time - (days_ * 24 * 60 * 60)
 
     # 获取指定目录下的所有文件和文件夹
     all_items = os.listdir(directory)
-    # 过滤出所有90天内无修改记录的文件夹
     old_subfolders = [
         item for item in all_items
         if os.path.isdir(os.path.join(directory, item)) and os.path.getmtime(
